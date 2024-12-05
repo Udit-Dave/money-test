@@ -1,0 +1,32 @@
+{
+  "testCases": [
+    {
+      "input": {
+        "amount": 123.45,
+        "currency": "USD"
+      },
+      "expectedOutput": "ONE HUNDRED TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS"
+    },
+    {
+      "input": {
+        "amount": 0.01,
+        "currency": "USD"
+      },
+      "expectedOutput": "ONE CENT"
+    },
+    {
+      "input": {
+        "amount": 45678.90,
+        "currency": "USD"
+      },
+      "expectedOutput": "FORTY-FIVE THOUSAND SIX HUNDRED SEVENTY-EIGHT DOLLARS AND NINETY CENTS"
+    },
+    {
+      "input": {
+        "amount": 1000000.00,
+        "currency": "USD"
+      },
+      "expectedOutput": "ONE MILLION DOLLARS AND ZERO CENTS"
+    }
+  ]
+}

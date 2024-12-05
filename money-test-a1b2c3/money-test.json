@@ -1,0 +1,24 @@
+{
+  "name": "money-test",
+  "version": "1.0.0",
+  "description": "A simple money conversion application",
+  "main": "src/main/java/com/example/MoneyApplication.java",
+  "scripts": {
+    "start": "java -jar target/money-test-1.0.0.jar",
+    "test": "mvn test"
+  },
+  "dependencies": {
+    "spring-boot-starter-web": "2.5.0",
+    "spring-boot-starter-test": "2.5.0"
+  },
+  "devDependencies": {
+    "junit": "5.7.0",
+    "mockito-core": "3.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/money-test.git"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

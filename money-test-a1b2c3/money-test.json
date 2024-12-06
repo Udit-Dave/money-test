@@ -1,0 +1,135 @@
+// File: src/main/java/com/example/MoneyApplication.java
+
+package com.example;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MoneyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MoneyApplication.class, args);
+    }
+}
+
+// File: src/main/java/com/example/controller/MoneyController.java
+
+package com.example.controller;
+
+import com.example.service.MoneyConversionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.*;
+
+@RestController
+@RequestMapping("/api/money")
+@Api(value = "Money Conversion API", description = "Operations for money conversion")
+public class MoneyController {
+
+    private final MoneyConversionService moneyConversionService;
+
+    @Autowired
+    public MoneyController(MoneyConversionService moneyConversionService) {
+        this.moneyConversionService = moneyConversionService;
+    }
+
+    @PostMapping("/convert")
+    @ApiOperation(value = "Convert money", notes = "Converts money from one currency to another")
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful conversion"),
+        @ApiResponse(code = 400, message = "Invalid input")
+    })
+    public String convertMoney(@RequestBody MoneyConversionRequest request) {
+        // Implementation depends on the actual requirements
+        return moneyConversionService.convertMoney(request);
+    }
+}
+
+// File: src/main/java/com/example/service/MoneyConversionService.java
+
+package com.example.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MoneyConversionService {
+
+    public String convertMoney(MoneyConversionRequest request) {
+        // Implementation of money conversion logic
+        // This is a placeholder and should be replaced with actual conversion logic
+        return "Converted amount: " + request.getAmount() + " " + request.getTargetCurrency();
+    }
+}
+
+// File: src/main/java/com/example/util/MoneyPrintUtil.java
+
+package com.example.util;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MoneyPrintUtil {
+
+    public void printMoney(double amount, String currency) {
+        System.out.println(amount + " " + currency);
+    }
+}
+
+// File: src/main/java/com/example/util/MoneyWriteUtil.java
+
+package com.example.util;
+
+import org.springframework.stereotype.Component;
+import java.io.FileWriter;
+import java.io.IOException;
+
+@Component
+public class MoneyWriteUtil {
+
+    public void writeMoney(String fileName, double amount, String currency) throws IOException {
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(amount + " " + currency);
+        }
+    }
+}
+
+// File: src/main/java/com/example/util/MoneyWriter.java
+
+package com.example.util;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MoneyWriter {
+
+    private final MoneyPrintUtil printUtil;
+    private final MoneyWriteUtil writeUtil;
+
+    @Autowired
+    public MoneyWriter(MoneyPrintUtil printUtil, MoneyWriteUtil writeUtil) {
+        this.printUtil = printUtil;
+        this.writeUtil = writeUtil;
+    }
+
+    public void writeMoney(double amount, String currency, String fileName) {
+        printUtil.printMoney(amount, currency);
+        try {
+            writeUtil.writeMoney(fileName, amount, currency);
+        } catch (IOException e) {
+            // Handle the exception appropriately
+            e.printStackTrace();
+        }
+    }
+}
+
+// File: src/main/resources/application.properties
+
+# Server port
+server.port=8080
+
+# Swagger configuration
+springfox.documentation.swagger.v2.path=/api-docs
+springfox.documentation.swagger-ui.path=/swagger-ui.html
+
+# Add other application-specific properties here

@@ -1,0 +1,19 @@
+{
+  "name": "Money Test",
+  "version": "1.0.0",
+  "description": "A simple application to convert money amounts",
+  "main": "src/main/java/com/example/Application.java",
+  "scripts": {
+    "start": "java -jar target/money-test-1.0.0.jar",
+    "test": "mvn test"
+  },
+  "dependencies": {
+    "spring-boot-starter-web": "2.5.0",
+    "spring-boot-starter-test": "2.5.0"
+  },
+  "devDependencies": {
+    "maven": "3.8.1"
+  },
+  "author": "Example Corp",
+  "license": "MIT"
+}

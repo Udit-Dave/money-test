@@ -1,0 +1,25 @@
+{
+  "name": "money-test",
+  "version": "1.0.0",
+  "description": "Money conversion and formatting application",
+  "main": "src/main/java/com/moneytest/MoneyApplication.java",
+  "scripts": {
+    "test": "mvn test",
+    "start": "mvn spring-boot:run"
+  },
+  "dependencies": {
+    "spring-boot-starter": "2.5.0",
+    "spring-boot-starter-web": "2.5.0",
+    "springfox-boot-starter": "3.0.0"
+  },
+  "devDependencies": {
+    "junit-jupiter-api": "5.7.0",
+    "mockito-core": "3.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/money-test.git"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
